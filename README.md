@@ -12,7 +12,7 @@ To get started with `sphinx-grasple`, first add it as a submodule to .gitmodules
 ...
 [submodule "sphinx-grasple"]
 	path = sphinx-grasple
-	url = https://gitlab.ewi.tudelft.nl/prime/sphinx-grasple.git
+	url = https://github.com/TeachBooks/Sphinx-Grasple-public.git
 ...
 ```
 
