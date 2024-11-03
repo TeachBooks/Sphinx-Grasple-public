@@ -4,6 +4,8 @@
 
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension for inserting Grasple exercises into a Jupyter book as an iframe.
 
+This package is a continuation of the package https://github.com/dbalague/sphinx-grasple/.
+
 ## Get started
 
 To get started with `sphinx-grasple`, first add it as a submodule to .gitmodules
