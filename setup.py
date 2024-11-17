@@ -22,7 +22,6 @@ URL = f"{BASE_URL}/archive/{VERSION}.tar.gz"
 extras = {
     "code_style": ["flake8<3.8.0,>=3.7.0", "black", "pre-commit"],
     "testing": [
-        "sphinx_exercise",
         "coverage",
         "pytest>=3.6,<4",
         "pytest-cov",
