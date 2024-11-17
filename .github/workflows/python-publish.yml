@@ -10,7 +10,6 @@ name: Publish Sphinx Grasple Package to PyPI
 
 on:
     push:
-        branches: [fix-workflow]
     #   tags:
     #     - 'v*'
     # pull_request:
@@ -88,7 +87,7 @@ jobs:
         name: >-
           Sign the Python distribution with Sigstore
           and upload them to GitHub Release
-        if: startsWith(github.ref, 'refs/tags/') # only release on tag pushes
+        if: startsWith(github.ref, 'refs/tags/') && github.base_ref == 'fix-workflow' # only release on tag pushes on fix-workflow branch
         needs:
         - docs
         runs-on: ubuntu-latest
