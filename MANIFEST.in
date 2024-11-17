@@ -7,5 +7,5 @@ include LICENSE
 include MANIFEST.in
 include README.md
 
-recursive-include sphinx_grasple *.js
-recursive-include sphinx_grasple *.css
+recursive-include teachnoobs_sphinx_grasple *.js
+recursive-include teachbooks_sphinx_grasple *.css

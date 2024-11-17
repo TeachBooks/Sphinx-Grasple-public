@@ -66,4 +66,4 @@ all = [
 
 [tool.hatch.version]
 source = "vcs"  # Tells Hatch to derive the version from the version control system (e.g., Git tags)
-build.hooks.vcs.version-file = "src/sphinx_grasple/_version.py"  # Path to version file if needed
+build.hooks.vcs.version-file = "teachbooks_sphinx_grasple/_version.py"  # Path to version file if needed
