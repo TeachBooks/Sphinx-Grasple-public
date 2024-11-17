@@ -87,7 +87,7 @@ jobs:
         name: >-
           Sign the Python distribution with Sigstore
           and upload them to GitHub Release
-        if: startsWith(github.ref, 'refs/tags/') && ('fix-workflow' in echo "${{ github.event.base_ref }}") # only release on tag pushes on fix-workflow branch
+        if: startsWith(github.ref, 'refs/tags/') # only release on tag pushes
         needs:
         - docs
         runs-on: ubuntu-latest
