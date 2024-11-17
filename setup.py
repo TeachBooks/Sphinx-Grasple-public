@@ -15,7 +15,7 @@ This fork is maintained and supported by Dani Balagué Guardia
 
 SHORT_DESCRIPTION = "A Sphinx extension for inserting Grasple exercises."
 
-BASE_URL = "https://github.com/dbalague/sphinx-exercise"
+BASE_URL = "https://github.com/dbalague/sphinx-grasple"
 URL = f"{BASE_URL}/archive/{VERSION}.tar.gz"
 
 # Define all extras
@@ -36,6 +36,7 @@ extras = {
         "pypng"
     ],
     "rtd": [
+        "sphinx_exercise",
         "sphinx>=4,<6",
         "sphinx-book-theme",
         "myst-nb~=0.17.1",
