@@ -7,11 +7,11 @@ This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension
 This package is a continuation of the package https://github.com/dbalague/sphinx-grasple/.
 
 ## Installation
-To install the Sphinx-Image-Inverter, follow these steps:
+To install the teachbooks-sphinx-grasple extension, follow these steps:
 
 **Step 1: Install the Package**
 
-Install the `sphinx-tudelft-theme` package using `pip`:
+Install the `teachbooks-sphinx-grasple` package using `pip`:
 ```
 pip install teachbooks-sphinx-grasple
 ```
