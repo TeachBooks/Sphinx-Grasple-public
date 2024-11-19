@@ -49,19 +49,7 @@ To use, include the following in your Jupyter book
 ::::
 ```
 
-Which gives the following HTML output:
-
-<div class="grasple admonition" id="grasple_exercise_1">
-<p class="admonition-title"><span class="caption-number">Grasple Exercise 1 </span></p>
-<div class="section" id="admonition-content">
-<div class="side-by-side docutils container">
-<div class="description-container docutils container">
-<p></p><p>Cross product in $\R^4$</p>
-<p></p>
-</div>
-</div>
-<details class="dropdown" open=""><summary>Show/Hide Content</summary><iframe src="https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093" width="100%" height="400px"></iframe></details></div>
-</div>
+In the jupyter book this leads to a custom admonition with the exercise included (https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093).
 
 In the PDF this leads to:
 ![example pdf](examplepdf.png)
