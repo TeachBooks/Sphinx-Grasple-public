@@ -56,3 +56,6 @@ In the PDF this leads to:
 ## Important Note
 
 The tests provided are still the original ones from sphinx-exercise and have not (yet) been adapted.
+
+## Contribute
+This tool's repository is stored on [GitHub](https://github.com/TeachBooks/Sphinx-Grasple-public). The `README.md` of the branch `manual_docs` is also part of the [TeachBooks manual](https://teachbooks.io/manual/external/Sphinx-Grasple-public/README.html) as a submodule. If you'd like to contribute, you can create a fork and open a pull request on the [GitHub repository](https://github.com/TeachBooks/Sphinx-Grasple-public). To update the `README.md` shown in the TeachBooks manual, create a fork and open a merge request for the [GitHub repository of the manual](https://github.com/TeachBooks/manual). If you intent to clone the manual including its submodules, clone using: `git clone --recurse-submodulesgit@github.com:TeachBooks/manual.git`.
