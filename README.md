@@ -1,5 +1,10 @@
 # Sphinx extension: Grapsle
 
+```{admonition} User types
+:class: tip
+This section is useful for user type 3-5.
+```
+
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension for inserting Grasple exercises into a Jupyter book as an iframe. It allows you to easily add Grasple question with some formatting and, more importantly, the creation of QR codes in the PDF version of the page. This leads to the source link of the iframe.
 
 This package is a continuation of the package https://github.com/dbalague/sphinx-grasple/.
@@ -47,11 +52,21 @@ To use, include the following in your Jupyter book
 ::::
 ```
 
-In the jupyter book this leads to a custom admonition with the exercise included (https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093).
+In the jupyter book this leads to:
+
+::::{grasple}
+:iframeclass: dark-light
+:url: https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093
+:label: grasple_exercise_1_3_4
+:dropdown:
+:description: Cross product in $\R^4$?
+
+::::
 
 In the PDF this leads to:
 ![example pdf](examplepdf.png)
 
+Note that the iframe doesn't load locally in VSCode or in the build file, only in the online book or if shown in a local server.
 
 ## Important Note
 
