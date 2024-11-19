@@ -47,7 +47,7 @@ To use, include the following in your Jupyter book
 :url: https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093
 :label: grasple_exercise_1_3_4
 :dropdown:
-:description: Cross product in $\R^4$?
+:description: Cross product in $R^4$?
 
 ::::
 ```
@@ -59,7 +59,7 @@ In the jupyter book this leads to:
 :url: https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093
 :label: grasple_exercise_1_3_4
 :dropdown:
-:description: Cross product in $\R^4$?
+:description: Cross product in $R^4$?
 
 ::::
 
