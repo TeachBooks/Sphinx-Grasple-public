@@ -1,4 +1,4 @@
-# Sphinx extension: Grasple
+# Grasple
 
 ```{admonition} User types
 :class: tip
