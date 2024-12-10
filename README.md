@@ -43,7 +43,7 @@ sphinx:
 
 To use, include the following in your Jupyter book
 
-```code
+```
 ::::{grasple}
 :iframeclass: dark-light
 :url: https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093
