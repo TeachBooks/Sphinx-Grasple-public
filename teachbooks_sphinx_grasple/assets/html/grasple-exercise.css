@@ -24,6 +24,15 @@ div.grasplecontainer {
   width : 100%;
   height : 400px;
   overflow: hidden;
+  mix-blend-mode: darken;
+}
+
+html[data-theme="dark"] div.grasplecontainer {
+  --scale-factor: 0.7;
+  width : 100%;
+  height : 400px;
+  overflow: hidden;
+  mix-blend-mode: lighten;
 }
 
 div.grasple-exercise {
