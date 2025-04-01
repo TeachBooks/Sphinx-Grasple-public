@@ -1,5 +1,4 @@
-# Grasple
-
+````{margin}
 ```{attributiongrey} Attribution
 :class: attribution
 This page reuses MIT licensed content from {cite:t}`grasple`. {fa}`quote-left`{ref}`Find out more here.<external_resources>`
@@ -11,6 +10,9 @@ This section is useful for user type 3-5.
 ```
 +++
 {bdg-primary}`Sphinx Extension`
+````
+
+# Grasple
 
 This package contains a [Sphinx](http://www.sphinx-doc.org/en/master/) extension for inserting Grasple exercises into a Jupyter book as an iframe. It allows you to easily add Grasple question with some formatting and, more importantly, the creation of QR codes in the PDF version of the page. This leads to the source link of the iframe.
 
