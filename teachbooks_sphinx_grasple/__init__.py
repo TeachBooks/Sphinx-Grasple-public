@@ -35,9 +35,9 @@ from .nodes import (
     is_extension_node,
     grasple_exercise_title,
     grasple_exercise_subtitle,
-    exercise_latex_number_reference,
-    visit_exercise_latex_number_reference,
-    depart_exercise_latex_number_reference,
+    grasple_exercise_latex_number_reference,
+    visit_grasple_exercise_latex_number_reference,
+    depart_grasple_exercise_latex_number_reference,
 )
 
 from .post_transforms import (
@@ -165,10 +165,10 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_node(grasple_exercise_subtitle)
 
     app.add_node(
-        exercise_latex_number_reference,
+        grasple_exercise_latex_number_reference,
         latex=(
-            visit_exercise_latex_number_reference,
-            depart_exercise_latex_number_reference,
+            visit_grasple_exercise_latex_number_reference,
+            depart_grasple_exercise_latex_number_reference,
         ),
     )
 

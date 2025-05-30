@@ -10,7 +10,7 @@ from .nodes import (
     grasple_exercise_title,
     grasple_exercise_subtitle,
     is_exercise_node,
-    exercise_latex_number_reference,
+    grasple_exercise_latex_number_reference,
 )
 
 logger = logging.getLogger(__name__)

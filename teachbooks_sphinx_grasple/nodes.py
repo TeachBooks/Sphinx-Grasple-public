@@ -48,7 +48,7 @@ class grasple_exercise_subtitle(docutil_nodes.subtitle):
     pass
 
 
-class exercise_latex_number_reference(sphinx_nodes.number_reference):
+class grasple_exercise_latex_number_reference(sphinx_nodes.number_reference):
     pass
 
 # Test Node Functions
@@ -91,7 +91,7 @@ def depart_grasple_exercise_node(self, node: Node) -> None:
 def visit_grasple_exercise_enumerable_node(self, node: Node) -> None:
     """
     LaTeX Reference Structure is exercise:{label} and resolved by
-    exercise_latex_number_reference nodes (see below)
+    grasple_exercise_latex_number_reference nodes (see below)
     """
     if isinstance(self, LaTeXTranslator):
         label = (
@@ -110,7 +110,7 @@ def depart_grasple_exercise_enumerable_node(self, node: Node) -> None:
         self.body.append("</div>")
         self.body.append("\n")
 
-def visit_exercise_latex_number_reference(self, node):
+def visit_grasple_exercise_latex_number_reference(self, node):
     id = node.get("refid")
     text = node.astext()
     hyperref = r"\hyperref[exercise:%s]{%s}" % (id, text)
@@ -118,5 +118,5 @@ def visit_exercise_latex_number_reference(self, node):
     raise docutil_nodes.SkipNode
 
 
-def depart_exercise_latex_number_reference(self, node):
+def depart_grasple_exercise_latex_number_reference(self, node):
     pass
