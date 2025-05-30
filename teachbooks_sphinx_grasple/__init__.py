@@ -95,10 +95,19 @@ def init_numfig(app: Sphinx, config: Config) -> None:
 
 
 def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
-    """Copies required assets for formating in HTML"""
+    """Copies required assets for formatting in HTML"""
 
     static_path = (
         Path(__file__).parent.joinpath("assets", "html", "grasple-exercise.css").absolute()
+    )
+    asset_files = [str(static_path)]
+
+    if exc is None:
+        for path in asset_files:
+            copy_asset(path, str(Path(app.outdir).joinpath("_static").absolute()))
+
+    static_path = (
+        Path(__file__).parent.joinpath("assets", "html", "grasple-exercise.js").absolute()
     )
     asset_files = [str(static_path)]
 
@@ -169,6 +178,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_post_transform(ResolveTitlesInGraspleExercises)
 
     app.add_css_file("grasple-exercise.css")
+    app.add_js_file("grasple-exercise.js")
 
     return {
         "version": "builtin",

@@ -108,6 +108,11 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
         iframe_height = self.options.get('iframe_height', '400px')
         dropdown = 'dropdown' in self.options
         qr = 'qr' in self.options
+        classes = self.options.get('class', '')
+        if classes == '':
+            self.options['class'] = ['fullscreenable']
+        else:
+            self.options['class'].append('fullscreenable')
 
         iframe_class = self.options.get("iframeclass")  # expect a list/string of classes
 
