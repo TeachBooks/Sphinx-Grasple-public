@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Check if fullscreenbackground already exists
+  if (!document.querySelector(".fullscreenbackground")) {
+    const bg = document.createElement("div");
+    bg.className = "fullscreenbackground";
+    document.body.appendChild(bg);
+  }
+
   document.querySelectorAll(".admonition.fullscreenable").forEach(admonition => {
     const header = admonition.querySelector("p.admonition-title");
     if (!header) return;
@@ -10,11 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.className = "fullscreen-btn";
     btn.innerHTML = '<i class="fas fa-expand"></i>';
     btn.onclick = function () {
-       const details = admonition.querySelector("section details");
+      const bg = document.querySelector(".fullscreenbackground");
+      const details = admonition.querySelector("section details");
       if (admonition.classList.contains("fullscreen")) {
         admonition.classList.remove("fullscreen");
         const grasple = details.querySelector(".grasplecontainer");
         grasple.style.height = `400px`;
+        if (bg) bg.classList.remove("active");
       } else {
         admonition.classList.add("fullscreen");
         // Open details if not already open
@@ -30,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const grasple = details.querySelector(".grasplecontainer");
           grasple.style.height = `calc(${remainder}px + 1.5rem)`;
         }
+        if (bg) bg.classList.add("active");
       }
     };
 

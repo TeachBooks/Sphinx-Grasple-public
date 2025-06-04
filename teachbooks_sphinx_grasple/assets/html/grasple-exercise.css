@@ -92,7 +92,7 @@ div.grasple-exercise details.dropdown {
   max-width: 80%;
 }
 
-/* full screen admonitions */
+/* full screen admonition */
 .admonition.fullscreenable.fullscreen {
   position: fixed;
   top: 2.5rem;
@@ -102,11 +102,23 @@ div.grasple-exercise details.dropdown {
   max-width: 100%;
   z-index: 10000;
   overflow: auto;
-  background-color: rgb(253, 248, 249); /* hardcoded for TU Delft theme */
   margin: 0;
 }
-html[data-theme='dark'] .admonition.fullscreenable.fullscreen {
-  background-color: rgb(21, 20, 21); /* hardcoded for TU Delft theme */
+.fullscreenbackground {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 2.5rem;
+  left: 0.5rem;
+  width: calc(100vw - 2rem);
+  height: calc(100vh - 3rem);
+  max-width: 100%;
+  z-index: 9998;
+  overflow: auto;
+  margin: 0;
+  background-color: var(--pst-color-background);
+}
+.fullscreenbackground.active {
+  display: block;
 }
 
 /* Styling for the full screen button */
