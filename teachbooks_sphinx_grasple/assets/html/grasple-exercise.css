@@ -33,6 +33,7 @@ html[data-theme="dark"] div.grasplecontainer {
   height : 400px;
   overflow: hidden;
   mix-blend-mode: lighten;
+  background: var(--pst-color-background);
 }
 
 div.grasple-exercise {

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const btn = document.createElement("button");
     btn.className = "fullscreen-btn";
-    btn.innerHTML = '<i class="fas fa-expand"></i>';
+    btn.innerHTML = '<i class="fas fa-maximize"></i>';
     btn.onclick = function () {
       const bg = document.querySelector(".fullscreenbackground");
       const details = admonition.querySelector("section details");
@@ -24,8 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
         admonition.classList.remove("fullscreen");
         const grasple = details.querySelector(".grasplecontainer");
         grasple.style.height = `400px`;
+        btn.innerHTML = '<i class="fas fa-maximize"></i>';
         if (bg) bg.classList.remove("active");
       } else {
+        btn.innerHTML = '<i class="fas fa-minimize"></i>';
         admonition.classList.add("fullscreen");
         // Open details if not already open
         if (details && !details.hasAttribute("open")) {
