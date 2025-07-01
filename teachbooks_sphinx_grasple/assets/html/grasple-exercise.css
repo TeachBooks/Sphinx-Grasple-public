@@ -50,6 +50,18 @@ div.grasple-exercise p.admonition-title::before {
   content: "\f303";
 }
 
+details.dropdown summary::marker {
+  content: "\f107 "; /* fa-angle-down */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900; /* 900 = solid style */
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.dropdown[open] summary::marker {
+  content: "\f106"; /* fa-angle-up */
+}
+
 /* Hide the image on screen */
 @media screen {
   div.side-by-side.docutils.container img {
