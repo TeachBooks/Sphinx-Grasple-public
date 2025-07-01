@@ -187,7 +187,7 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
             container_node += dropdown_content
 
             # Create the details element with the summary and container
-            details_html = '<details class="dropdown"><summary>Show/Hide Content</summary>{}</details>'.format(container_node.astext())
+            details_html = '<details class="dropdown"><summary>Click to show/hide</summary>{}</details>'.format(container_node.astext())
             details_node = nodes.raw('', details_html, format='html')
 
             # Add the details element to the exercise node
