@@ -40,7 +40,7 @@ To use, include the following in your Jupyter book
 ::::{grasple}
 :iframeclass: dark-light
 :url: https://embed.grasple.com/exercises/f6c1bb4b-e63e-492e-910a-5a8c433de281?id=75093
-:label: grasple_exercise_1_3_4
+:label: grasple_exercise_manual
 :dropdown:
 :description: Cross product in $\R^4$?
 
