@@ -7,10 +7,10 @@ include LICENSE
 include MANIFEST.in
 include README.md
 
-recursive-include teachnoobs_sphinx_grasple *.js
-recursive-include teachbooks_sphinx_grasple *.css
+recursive-include src *.js
+recursive-include src *.css
 
-recursive-include sphinx_proof *.json
-recursive-include sphinx_proof *.mo
-recursive-include sphinx_proof *.po
-recursive-include sphinx_proof *.py
+recursive-include src *.json
+recursive-include src *.mo
+recursive-include src *.po
+recursive-include src *.py
