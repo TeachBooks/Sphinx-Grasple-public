@@ -10,6 +10,7 @@ see AUTHORS in the original project (Copyright 2020-2021 by Executable Books).
 :license: MIT, see LICENSE for details.
 """
 
+import os
 from pathlib import Path
 from typing import Any, Dict, Set, Union, cast
 from sphinx.config import Config
@@ -19,6 +20,7 @@ from sphinx.domains.std import StandardDomain
 from docutils.nodes import Node
 from sphinx.util import logging
 from sphinx.util.fileutil import copy_asset
+from sphinx.locale import get_translation
 
 from .directive import (
     GraspleExerciseDirective,
@@ -47,6 +49,8 @@ from .post_transforms import (
 
 logger = logging.getLogger(__name__)
 
+MESSAGE_CATALOG_NAME = "grasple"
+translate = get_translation(MESSAGE_CATALOG_NAME)
 
 # Callback Functions
 
@@ -88,7 +92,7 @@ def init_numfig(app: Sphinx, config: Config) -> None:
     """Initialize numfig"""
 
     config["numfig"] = True
-    numfig_format = {"grasple-exercise": "Grasple Exercise %s"}
+    numfig_format = {"grasple-exercise": f"{translate('Grasple exercise')} %s"}
     # Merge with current sphinx settings
     numfig_format.update(config.numfig_format)
     config.numfig_format = numfig_format
@@ -179,6 +183,11 @@ def setup(app: Sphinx) -> Dict[str, Any]:
 
     app.add_css_file("grasple-exercise.css")
     app.add_js_file("grasple-exercise.js")
+
+    # add translations
+    package_dir = os.path.abspath(os.path.dirname(__file__))
+    locale_dir = os.path.join(package_dir, "translations", "locales")
+    app.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
 
     return {
         "version": "builtin",

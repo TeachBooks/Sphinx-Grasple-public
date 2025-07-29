@@ -25,12 +25,16 @@ from .nodes import (
 )
 from docutils import nodes
 from sphinx.util import logging
+from sphinx.locale import get_translation
+
 
 import pyqrcode
 from docutils.statemachine import StringList
 
 logger = logging.getLogger(__name__)
 
+MESSAGE_CATALOG_NAME = "grasple"
+translate = get_translation(MESSAGE_CATALOG_NAME)
 
 class SphinxGraspleExerciseBaseDirective(SphinxDirective):
     def duplicate_labels(self, label):
@@ -123,7 +127,7 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
         else:
             iframe_class = str(iframe_class)
 
-        self.defaults = {"title_text": "Grasple Exercise"}
+        self.defaults = {"title_text": f"{translate('Grasple exercise')}"}
         self.serial_number = self.env.new_serialno()
 
         # Initialise Registry (if needed)
@@ -187,7 +191,7 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
             container_node += dropdown_content
 
             # Create the details element with the summary and container
-            details_html = '<details class="dropdown"><summary>Click to show/hide</summary>{}</details>'.format(container_node.astext())
+            details_html = f"<details class=\"dropdown\"><summary>{translate("Click to show/hide")}</summary>{container_node.astext()}</details>"
             details_node = nodes.raw('', details_html, format='html')
 
             # Add the details element to the exercise node
