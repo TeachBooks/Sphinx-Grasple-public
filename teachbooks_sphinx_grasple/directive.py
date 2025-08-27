@@ -178,6 +178,21 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
         section += side_by_side
 
         # Create the iframe HTML code
+        # 1. Remove language query parameter from url
+        url_parts = url.split("?")
+        query = url_parts[1]
+        start = query.find("&language=")
+        if start != -1:
+            next = query.find("&", start + 1)
+            if next != -1:
+                query = query[:start] + query[next:]
+            else:
+                query = query[:start]
+            url = url_parts[0] + query
+        # 2. Add language parameter based on document language
+        lang = self.env.config.language
+        if lang in ['en', 'nl']:
+            url = url + f"&language={lang}"
         iframe_html = f'<div class="grasplecontainer"><iframe src="{url}" class="grasple {iframe_class}"></iframe></div>'
         iframe_node = nodes.raw('', iframe_html, format='html')
 
