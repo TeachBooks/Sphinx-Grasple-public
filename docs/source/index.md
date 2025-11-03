@@ -41,7 +41,7 @@ To get started with `sphinx-exercise`, first install it through `pip`:
 pip install sphinx-exercise
 ```
 
-### Jupyter-Book Project
+### Jupyter-Book v1 / TeachBook Project
 
 Add `sphinx_exercise` to your [extra_extensions](https://jupyterbook.org/v1/advanced/sphinx.html#custom-sphinx-extensions) config in `_config.yml`
 

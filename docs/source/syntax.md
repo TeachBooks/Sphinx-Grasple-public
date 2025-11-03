@@ -11,7 +11,7 @@ We would like to make this more theme agnostic and status can be found in [this 
 ```
 
 `````{note}
-To use this extension in a Jupyter Book project, add `sphinx_exercise` as an extension in the `_config.yml` file.
+To use this extension in a Jupyter Book v1 or TeachBooks project, add `sphinx_exercise` as an extension in the `_config.yml` file.
 
 ```{code-block} python
 sphinx:
@@ -333,7 +333,7 @@ extensions = [
 ]
 ```
 
-For Jupyter Book projects, add `sphinx_togglebutton` under `extra_extensions`
+For Jupyter Book v1 or TeachBooks projects, add `sphinx_togglebutton` under `extra_extensions`
 
 ```yaml
 sphinx:
@@ -397,7 +397,7 @@ This is a hidden exercise directive.
 
 ### Remove All Solutions
 
-All solution directives can be removed from the final output by setting `hide_solutions` to `True`. For Sphinx projects, add the configuration key in the `conf.py` file. Jupyter Book projects, should set the configuration key in `_config.yml` as follows
+All solution directives can be removed from the final output by setting `hide_solutions` to `True`. For Sphinx projects, add the configuration key in the `conf.py` file. Jupyter Book v1 or TeachBooks projects, should set the configuration key in `_config.yml` as follows
 
 ```yaml
 ...
@@ -409,7 +409,7 @@ sphinx:
 
 ## Custom CSS or JavaScript
 
-Custom JavaScript scripts and CSS rules will allow you to add additional functionality or customize how elements are displayed. If you'd like to include custom CSS or JavaScript scripts in Jupyter Book, simply add any files ending in `.css` or `.js` under a `_static` folder. Any files under this folder will be automatically copied into the built book.
+Custom JavaScript scripts and CSS rules will allow you to add additional functionality or customize how elements are displayed. If you'd like to include custom CSS or JavaScript scripts in Jupyter Book v1 or TeachBooks, simply add any files ending in `.css` or `.js` under a `_static` folder. Any files under this folder will be automatically copied into the built book.
 
 In Sphinx, this can be achieved by specifying the path of your `_static` folder and including CSS/JavaScript files by using the options `html_css_files` and `html_js_files` in `conf.py`:
 
