@@ -18,6 +18,10 @@ from .latex import LaTeXMarkup
 logger = logging.getLogger(__name__)
 LaTeX = LaTeXMarkup()
 
+from sphinx.locale import get_translation
+
+MESSAGE_CATALOG_NAME = "grasple"
+translate = get_translation(MESSAGE_CATALOG_NAME)
 
 # Nodes
 
@@ -38,7 +42,7 @@ class grasple_exercise_end_node(docutil_nodes.Admonition, docutil_nodes.Element)
 class grasple_exercise_title(docutil_nodes.title):
     def default_title(self):
         title_text = self.children[0].astext()
-        if title_text == "Grasple Exercise" or title_text == "Grasple Exercise %s":
+        if title_text == f"{translate('Grasple exercise')}" or title_text == f"{translate('Grasple exercise')} %s":
             return True
         else:
             return False
@@ -48,7 +52,7 @@ class grasple_exercise_subtitle(docutil_nodes.subtitle):
     pass
 
 
-class exercise_latex_number_reference(sphinx_nodes.number_reference):
+class grasple_exercise_latex_number_reference(sphinx_nodes.number_reference):
     pass
 
 # Test Node Functions
@@ -91,7 +95,7 @@ def depart_grasple_exercise_node(self, node: Node) -> None:
 def visit_grasple_exercise_enumerable_node(self, node: Node) -> None:
     """
     LaTeX Reference Structure is exercise:{label} and resolved by
-    exercise_latex_number_reference nodes (see below)
+    grasple_exercise_latex_number_reference nodes (see below)
     """
     if isinstance(self, LaTeXTranslator):
         label = (
@@ -110,7 +114,7 @@ def depart_grasple_exercise_enumerable_node(self, node: Node) -> None:
         self.body.append("</div>")
         self.body.append("\n")
 
-def visit_exercise_latex_number_reference(self, node):
+def visit_grasple_exercise_latex_number_reference(self, node):
     id = node.get("refid")
     text = node.astext()
     hyperref = r"\hyperref[exercise:%s]{%s}" % (id, text)
@@ -118,5 +122,5 @@ def visit_exercise_latex_number_reference(self, node):
     raise docutil_nodes.SkipNode
 
 
-def depart_exercise_latex_number_reference(self, node):
+def depart_grasple_exercise_latex_number_reference(self, node):
     pass

@@ -25,12 +25,16 @@ from .nodes import (
 )
 from docutils import nodes
 from sphinx.util import logging
+from sphinx.locale import get_translation
+
 
 import pyqrcode
 from docutils.statemachine import StringList
 
 logger = logging.getLogger(__name__)
 
+MESSAGE_CATALOG_NAME = "grasple"
+translate = get_translation(MESSAGE_CATALOG_NAME)
 
 class SphinxGraspleExerciseBaseDirective(SphinxDirective):
     def duplicate_labels(self, label):
@@ -108,6 +112,11 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
         iframe_height = self.options.get('iframe_height', '400px')
         dropdown = 'dropdown' in self.options
         qr = 'qr' in self.options
+        classes = self.options.get('class', '')
+        if classes == '':
+            self.options['class'] = ['fullscreenable']
+        else:
+            self.options['class'].append('fullscreenable')
 
         iframe_class = self.options.get("iframeclass")  # expect a list/string of classes
 
@@ -118,7 +127,7 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
         else:
             iframe_class = str(iframe_class)
 
-        self.defaults = {"title_text": "Grasple Exercise"}
+        self.defaults = {"title_text": f"{translate('Grasple exercise')}"}
         self.serial_number = self.env.new_serialno()
 
         # Initialise Registry (if needed)
@@ -169,6 +178,21 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
         section += side_by_side
 
         # Create the iframe HTML code
+        # 1. Remove language query parameter from url
+        url_parts = url.split("?")
+        query = url_parts[1]
+        start = query.find("&language=")
+        if start != -1:
+            next = query.find("&", start + 1)
+            if next != -1:
+                query = query[:start] + query[next:]
+            else:
+                query = query[:start]
+            url = url_parts[0] + query
+        # 2. Add language parameter based on document language
+        lang = self.env.config.language
+        if lang in ['en', 'nl']:
+            url = url + f"&language={lang}"
         iframe_html = f'<div class="grasplecontainer"><iframe src="{url}" class="grasple {iframe_class}"></iframe></div>'
         iframe_node = nodes.raw('', iframe_html, format='html')
 
@@ -182,7 +206,7 @@ class GraspleExerciseDirective(SphinxGraspleExerciseBaseDirective):
             container_node += dropdown_content
 
             # Create the details element with the summary and container
-            details_html = '<details class="dropdown"><summary>Show/Hide Content</summary>{}</details>'.format(container_node.astext())
+            details_html = f"<details class=\"dropdown\"><summary>&nbsp;{translate('Click to show/hide')}</summary>{container_node.astext()}</details>"
             details_node = nodes.raw('', details_html, format='html')
 
             # Add the details element to the exercise node

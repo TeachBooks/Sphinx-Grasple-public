@@ -10,6 +10,7 @@ see AUTHORS in the original project (Copyright 2020-2021 by Executable Books).
 :license: MIT, see LICENSE for details.
 """
 
+import os
 from pathlib import Path
 from typing import Any, Dict, Set, Union, cast
 from sphinx.config import Config
@@ -19,6 +20,7 @@ from sphinx.domains.std import StandardDomain
 from docutils.nodes import Node
 from sphinx.util import logging
 from sphinx.util.fileutil import copy_asset
+from sphinx.locale import get_translation
 
 from .directive import (
     GraspleExerciseDirective,
@@ -35,9 +37,9 @@ from .nodes import (
     is_extension_node,
     grasple_exercise_title,
     grasple_exercise_subtitle,
-    exercise_latex_number_reference,
-    visit_exercise_latex_number_reference,
-    depart_exercise_latex_number_reference,
+    grasple_exercise_latex_number_reference,
+    visit_grasple_exercise_latex_number_reference,
+    depart_grasple_exercise_latex_number_reference,
 )
 
 from .post_transforms import (
@@ -47,6 +49,8 @@ from .post_transforms import (
 
 logger = logging.getLogger(__name__)
 
+MESSAGE_CATALOG_NAME = "grasple"
+translate = get_translation(MESSAGE_CATALOG_NAME)
 
 # Callback Functions
 
@@ -88,17 +92,26 @@ def init_numfig(app: Sphinx, config: Config) -> None:
     """Initialize numfig"""
 
     config["numfig"] = True
-    numfig_format = {"grasple-exercise": "Grasple Exercise %s"}
+    numfig_format = {"grasple-exercise": f"{translate('Grasple exercise')} %s"}
     # Merge with current sphinx settings
     numfig_format.update(config.numfig_format)
     config.numfig_format = numfig_format
 
 
 def copy_asset_files(app: Sphinx, exc: Union[bool, Exception]):
-    """Copies required assets for formating in HTML"""
+    """Copies required assets for formatting in HTML"""
 
     static_path = (
         Path(__file__).parent.joinpath("assets", "html", "grasple-exercise.css").absolute()
+    )
+    asset_files = [str(static_path)]
+
+    if exc is None:
+        for path in asset_files:
+            copy_asset(path, str(Path(app.outdir).joinpath("_static").absolute()))
+
+    static_path = (
+        Path(__file__).parent.joinpath("assets", "html", "grasple-exercise.js").absolute()
     )
     asset_files = [str(static_path)]
 
@@ -156,10 +169,10 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_node(grasple_exercise_subtitle)
 
     app.add_node(
-        exercise_latex_number_reference,
+        grasple_exercise_latex_number_reference,
         latex=(
-            visit_exercise_latex_number_reference,
-            depart_exercise_latex_number_reference,
+            visit_grasple_exercise_latex_number_reference,
+            depart_grasple_exercise_latex_number_reference,
         ),
     )
 
@@ -169,6 +182,12 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_post_transform(ResolveTitlesInGraspleExercises)
 
     app.add_css_file("grasple-exercise.css")
+    app.add_js_file("grasple-exercise.js")
+
+    # add translations
+    package_dir = os.path.abspath(os.path.dirname(__file__))
+    locale_dir = os.path.join(package_dir, "translations", "locales")
+    app.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
 
     return {
         "version": "builtin",
